@@ -1,0 +1,11 @@
+ # IntelliJ IDEA [http://devnet.jetbrains.com/docs/DOC-1186]
+ # Share all the files under .idea directory in the project root except the
+ # workspace.xml and tasks.xml files which store user specific settings, also
+ # share all the .iml module files.
+
+.idea/workspace.xml
+.idea/tasks.xml
+#/gen/**/*
+#/out/**/*
+/gen
+/out
