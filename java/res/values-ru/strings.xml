@@ -56,9 +56,11 @@
     <string name="key_ad04_main">к</string>
     <string name="key_ad04_shift">К</string>
     <string name="key_ad04_alt">4r</string>
+
     <string name="key_ad05_main">е</string>
     <string name="key_ad05_shift">Е</string>
-    <string name="key_ad05_alt">5t</string>
+    <string name="key_ad05_alt">5ёt</string>
+
     <string name="key_ad06_main">н</string>
     <string name="key_ad06_shift">Н</string>
     <string name="key_ad06_alt">6y</string>
