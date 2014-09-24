@@ -341,34 +341,33 @@
             android:shiftLabel="@string/key_space_shift"
             android:keyIcon="@drawable/sym_keyboard_space"
             android:iconPreview="@drawable/sym_keyboard_feedback_space"
-            android:keyWidth="32.142853%p"
+            android:keyWidth="28.5714291485%p"
             android:isModifier="true" />
         <Key
             android:keyLabel="@string/key_sm01_main"
             android:shiftLabel="@string/key_sm01_shift"
             android:popupKeyboard="@xml/kbd_popup_template"
             android:popupCharacters="@string/key_sm01_alt" />
-       <Key
+        <Key
             android:keyLabel="@string/key_sm02_main"
             android:shiftLabel="@string/key_sm02_shift"
             android:popupKeyboard="@xml/kbd_popup_template"
             android:popupCharacters="@string/key_sm02_alt" />
-       <Key
+        <Key
             android:keyLabel="@string/key_sm03_main"
             android:shiftLabel="@string/key_sm03_shift"
             android:popupKeyboard="@xml/kbd_popup_template"
             android:popupCharacters="@string/key_sm03_alt" />
-       <Key
+        <Key
             android:keyLabel="@string/key_sm04_main"
             android:shiftLabel="@string/key_sm04_shift"
             android:popupKeyboard="@xml/kbd_popup_template"
             android:popupCharacters="@string/key_sm04_alt" />
         <Key
-            android:codes="@integer/key_dpad_right"
-            android:isModifier="true"
-            android:keyLabel="&#x25b7;"
-            android:isRepeatable="true"
-            android:isCursor="true"
-            android:keyEdgeFlags="right" />
+            android:codes="@integer/key_lang"
+            android:keyLabel="@string/key_lang_main"
+            android:keyWidth="10.714281%p"
+            android:keyEdgeFlags="right"
+            android:isModifier="true" />
     </Row>
 </Keyboard>
