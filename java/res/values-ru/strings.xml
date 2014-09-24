@@ -118,9 +118,6 @@
     <string name="key_ac11_main">э</string>
     <string name="key_ac11_shift">Э</string>
     <string name="key_ac11_alt">\'&quot;</string>
-    <string name="key_lsgt_main">&lt;</string>
-    <string name="key_lsgt_shift">&gt;</string>
-    <string name="key_lsgt_alt">&lt;&gt;|\@</string>
     <string name="key_ab01_main">я</string>
     <string name="key_ab01_shift">Я</string>
     <string name="key_ab01_alt">z</string>

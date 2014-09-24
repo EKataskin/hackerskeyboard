@@ -184,10 +184,6 @@
     <string name="key_ac11_shift">\"</string>
     <string name="key_ac11_alt">\'\"‘’“”</string>
 
-    <string name="key_lsgt_main"></string>
-    <string name="key_lsgt_shift"></string>
-    <string name="key_lsgt_alt"></string>
-
     <string name="key_ab01_main">z</string>
     <string name="key_ab01_shift">Z</string>
     <string name="key_ab01_alt">@string/alternates_for_z</string>

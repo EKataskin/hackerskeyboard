@@ -254,12 +254,8 @@
             android:iconPreview="@drawable/sym_keyboard_feedback_shift"
             android:isModifier="true"
             android:isSticky="true"
+            android:keyWidth="14.285714297%p"
             android:keyEdgeFlags="left" />
-        <Key
-            android:keyLabel="@string/key_lsgt_main"
-            android:shiftLabel="@string/key_lsgt_shift"
-            android:popupKeyboard="@xml/kbd_popup_template"
-            android:popupCharacters="@string/key_lsgt_alt" />
         <Key
             android:keyLabel="@string/key_ab01_main"
             android:shiftLabel="@string/key_ab01_shift"
