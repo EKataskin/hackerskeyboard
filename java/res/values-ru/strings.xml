@@ -149,6 +149,10 @@
     <string name="key_ab10_shift">,</string>
     <string name="key_ab10_alt">.,/\?</string>
 
+	<string name="key_ab11_main">!</string>
+	<string name="key_ab11_shift"></string>
+	<string name="key_ab11_alt"></string>
+
     <string name="english_ime_input_options">"Параметры ввода"</string>
     <string name="vibrate_on_keypress">"Виброотклик клавиш"</string>
     <string name="sound_on_keypress">"Звук клавиш"</string>
