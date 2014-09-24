@@ -1,23 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-/*
-**
-** Copyright 2011, The Android Open Source Project
-**
-** Licensed under the Apache License, Version 2.0 (the "License");
-** you may not use this file except in compliance with the License.
-** You may obtain a copy of the License at
-**
-**     http://www.apache.org/licenses/LICENSE-2.0
-**
-** Unless required by applicable law or agreed to in writing, software
-** distributed under the License is distributed on an "AS IS" BASIS,
-** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-** See the License for the specific language governing permissions and
-** limitations under the License.
-*/
--->
-
 <Keyboard
     xmlns:android="http://schemas.android.com/apk/res/org.pocketworkstation.pckeyboard"
     android:keyWidth="7.1428571485%p"
@@ -39,20 +20,10 @@
         <Key android:keyLabel="F10" android:codes="@integer/key_fkey_f10" android:isModifier="true" />
         <Key android:keyLabel="F11" android:codes="@integer/key_fkey_f11" android:isModifier="true" />
         <Key android:keyLabel="F12" android:codes="@integer/key_fkey_f12" android:isModifier="true" />
-	<Key
-            android:codes="@integer/key_home"
-            android:isModifier="true"            
-            android:keyLabel="Home" />
-	<Key
-            android:codes="@integer/key_end"
-            android:isModifier="true"            
-            android:keyLabel="End"
-            android:keyEdgeFlags="right" />
-        />
+        <Key android:keyLabel="Home" android:codes="@integer/key_home" android:isModifier="true" />
+        <Key android:keyLabel="End" android:codes="@integer/key_end" android:isModifier="true" android:keyEdgeFlags="right" />
     </Row>
-    <Row
-        android:rowEdgeFlags="top"
-    >
+    <Row android:rowEdgeFlags="top">
         <Key
             android:keyLabel="@string/key_tlde_main"
             android:shiftLabel="@string/key_tlde_shift"
@@ -351,9 +322,7 @@
             android:keyEdgeFlags="right"
             android:isModifier="true" />
     </Row>
-    <Row
-        android:rowEdgeFlags="bottom"
-    >
+    <Row android:rowEdgeFlags="bottom">
         <Key
             android:keyLabel="Esc"
             android:codes="@integer/key_escape"

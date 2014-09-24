@@ -2,9 +2,12 @@
 <resources>
     <string name="alternates_for_cyrillic_e">5ё</string>
     <string name="alternates_for_cyrillic_soft_sign">ъ</string>
-    <string name="key_tlde_main">ё</string>
-    <string name="key_tlde_shift">Ё</string>
-    <string name="key_tlde_alt">`~</string>
+    <string name="key_lang_main">Ru</string>
+    <string name="key_lang_shift" />
+    <string name="key_lang_alt" />
+    <string name="key_tlde_main">`</string>
+    <string name="key_tlde_shift">`</string>
+    <string name="key_tlde_alt">~</string>
     <string name="key_ae01_main">1</string>
     <string name="key_ae01_shift">!</string>
     <string name="key_ae01_alt">1!¡¹½⅓¼⅛</string>
@@ -146,6 +149,7 @@
     <string name="key_ab10_main">.</string>
     <string name="key_ab10_shift">,</string>
     <string name="key_ab10_alt">.,/\?</string>
+
     <string name="english_ime_input_options">"Параметры ввода"</string>
     <string name="vibrate_on_keypress">"Виброотклик клавиш"</string>
     <string name="sound_on_keypress">"Звук клавиш"</string>
@@ -165,7 +169,7 @@
     <string name="auto_cap">"Автоподст. заглавных"</string>
     <string name="auto_cap_summary">"Делать заглавной первую букву предложения"</string>
     <string name="auto_punctuate">"Автопунктуация"</string>
-    <string name="auto_punctuate_summary"></string>
+    <string name="auto_punctuate_summary" />
     <string name="quick_fixes">"Быстрое исправление"</string>
     <string name="quick_fixes_summary">"Исправлять распространенные опечатки"</string>
     <string name="show_suggestions">"Предлагать варианты"</string>
@@ -178,7 +182,7 @@
     <string name="settings_key_mode_always_hide_name">"Всегда скрывать"</string>
     <string name="bigram_suggestion">"Биграммные подсказки"</string>
     <string name="bigram_suggestion_summary">"Используйте предыдущее слово, чтобы исправить подсказку"</string>
-    <string name="added_word">"<xliff:g id="WORD">%s</xliff:g>: сохранено"</string>
+    <string name="added_word">"%s: сохранено"</string>
     <string name="tip_long_press">"Удерживайте клавишу, чтобы увидеть варианты с диакритическими знаками (ø, ö и т.д.)"</string>
     <string name="tip_dismiss">"Нажмите клавишу \"Назад\" ↶, чтобы закрыть клавиатуру в любой момент"</string>
     <string name="tip_access_symbols">"Открыть цифры и символы"</string>
@@ -206,7 +210,7 @@
     <string name="voice_hint_dialog_message">"Чтобы использовать голосовой ввод, нажмите кнопку микрофона или проведите пальцем по экранной клавиатуре."</string>
     <string name="voice_listening">"Говорите"</string>
     <string name="voice_working">"Обработка запроса"</string>
-    <string name="voice_initializing"></string>
+    <string name="voice_initializing" />
     <string name="voice_error">"Ошибка. Повторите попытку."</string>
     <string name="voice_network_error">"Ошибка подключения"</string>
     <string name="voice_too_much_speech">"Слишком длинная фраза"</string>
@@ -226,11 +230,11 @@
     <string name="close_the_keyboard"><font size="17"><b>"Закрытие клавиатуры"\n</b></font><font size="3">\n</font>"Нажмите клавишу \"Назад\"."</string>
     <string name="touch_and_hold"><font size="17"><b>"Нажмите и удерживайте клавишу для вызова параметров"\n</b></font><font size="3">\n</font>"Доступ к пунктуационным и диакритическим знакам."</string>
     <string name="keyboard_settings"><font size="17"><b>"Настройки клавиатуры"\n</b></font><font size="3">\n</font>"Нажмите и удерживайте клавишу "<b>"?123"</b>"."</string>
-    <string name="popular_domain_0">".com"</string>
-    <string name="popular_domain_1">".net"</string>
-    <string name="popular_domain_2">".org"</string>
-    <string name="popular_domain_3">".gov"</string>
-    <string name="popular_domain_4">".edu"</string>
+    <string name="popular_domain_0">.ru</string>
+    <string name="popular_domain_1">.ua</string>
+    <string name="popular_domain_2">.com</string>
+    <string name="popular_domain_3">.net</string>
+    <string name="popular_domain_4">.org</string>
     <string name="selectInputMethod">"Выбрать способ ввода"</string>
     <string name="language_selection_title">"Языки ввода"</string>
     <string name="language_selection_summary">"Для изменения языка проведите пальцем по пробелу"</string>
