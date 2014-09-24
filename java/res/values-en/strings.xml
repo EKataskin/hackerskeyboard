@@ -34,6 +34,10 @@
 	<string name="alternates_for_o_umlaut"></string>
 	<string name="alternates_for_oe"></string>
 
+	<string name="key_lang_main">En</string>
+	<string name="key_lang_shift" />
+	<string name="key_lang_alt" />
+
 	<string name="key_tlde_main">`</string>
 	<string name="key_tlde_shift">~</string>
 	<string name="key_tlde_alt">`~</string>

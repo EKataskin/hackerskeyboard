@@ -2,9 +2,11 @@
 <resources>
     <string name="alternates_for_cyrillic_e">5ё</string>
     <string name="alternates_for_cyrillic_soft_sign">ъ</string>
+
     <string name="key_lang_main">Ru</string>
     <string name="key_lang_shift" />
     <string name="key_lang_alt" />
+
     <string name="key_tlde_main">`</string>
     <string name="key_tlde_shift">`</string>
     <string name="key_tlde_alt">~</string>

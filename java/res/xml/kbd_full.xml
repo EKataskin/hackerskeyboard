@@ -319,9 +319,9 @@
     </Row>
     <Row android:rowEdgeFlags="bottom">
         <Key
-            android:keyLabel="Esc"
-            android:codes="@integer/key_escape"
-            android:keyWidth="10.7142855%p"
+            android:codes="@integer/key_lang"
+            android:keyLabel="@string/key_lang_main"
+            android:keyWidth="10.714281%p"
             android:keyEdgeFlags="left"
             android:isModifier="true" />
         <Key
