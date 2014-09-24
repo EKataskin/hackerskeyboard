@@ -854,9 +854,7 @@ public class Keyboard
 				{
 					char c=popup.charAt( 0 );
 					if( wantAll || wantAscii && is7BitAscii( c ) )
-					{
 						altHint=Character.toString( c );
-					}
 				}
 			}
 			return altHint;
