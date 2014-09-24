@@ -155,6 +155,22 @@
 	<string name="key_ab11_shift"></string>
 	<string name="key_ab11_alt"></string>
 
+	<string name="key_sm01_main">\@</string>
+	<string name="key_sm01_shift"></string>
+	<string name="key_sm01_alt"></string>
+
+	<string name="key_sm02_main">:</string>
+	<string name="key_sm02_shift"></string>
+	<string name="key_sm02_alt"></string>
+
+	<string name="key_sm03_main">,</string>
+	<string name="key_sm03_shift"></string>
+	<string name="key_sm03_alt"></string>
+
+	<string name="key_sm04_main">\?</string>
+	<string name="key_sm04_shift"></string>
+	<string name="key_sm04_alt"></string>
+
     <string name="english_ime_input_options">"Параметры ввода"</string>
     <string name="vibrate_on_keypress">"Виброотклик клавиш"</string>
     <string name="sound_on_keypress">"Звук клавиш"</string>
