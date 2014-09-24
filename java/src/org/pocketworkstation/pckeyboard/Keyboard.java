@@ -633,8 +633,10 @@ public class Keyboard {
             }
         }
 
-        public String getHintLabel(boolean wantAscii, boolean wantAll) {
-            if (hint == null) {
+        public String getHintLabel(boolean wantAscii, boolean wantAll)
+        {
+            if (hint == null)
+            {
                 hint = "";
                 if (shiftLabel != null && !isSimpleUppercase) {
                     char c = shiftLabel.charAt(0);
