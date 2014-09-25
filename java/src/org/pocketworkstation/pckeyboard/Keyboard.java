@@ -687,7 +687,8 @@ public class Keyboard
 				if( isShifted || isShiftCaps )
 				{
 					String upper=Character.toString( c ).toUpperCase( LatinIME.sKeyboardSettings.inputLocale );
-					if( upper.length()==1 ) c=upper.charAt( 0 );
+					if( upper.length()==1 )
+						c=upper.charAt( 0 );
 				}
 
 				if( c==mainChar || c==shiftChar || c==capsChar ) continue;
@@ -863,7 +864,7 @@ public class Keyboard
 		private static boolean is7BitAscii( char c )
 		{
 			if( (c>='A' && c<='Z') || (c>='a' && c<='z') ) return false;
-			return c>=32 && c<127;
+			return c==8470 || c>=32 && c<127; // 8470 = '№' 
 		}
 
 		/**

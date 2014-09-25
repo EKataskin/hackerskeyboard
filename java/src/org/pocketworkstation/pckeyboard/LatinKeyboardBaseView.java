@@ -147,6 +147,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 	// XML attribute
 	private float mKeyTextSize;
 	private float mLabelScale=1.0f;
+	private int mHintTextSize;
 	private int mKeyTextColor;
 	private int mKeyHintColor;
 	private int mKeyCursorColor;
@@ -722,8 +723,12 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		{
 			tracker.setKeyboard( mKeys, mKeyHysteresisDistance );
 		}
+
 		mLabelScale=LatinIME.sKeyboardSettings.labelScalePref;
-		if( keyboard.mLayoutRows>=4 ) mLabelScale*=5.0f/keyboard.mLayoutRows;
+		if( keyboard.mLayoutRows>=4 )
+			mLabelScale*=5.0f/keyboard.mLayoutRows;
+		mHintTextSize=(int)(mKeyTextSize*0.6*mLabelScale);
+		
 		requestLayout();
 		// Hint to reallocate the buffer if the size changed
 		mKeyboardChanged=true;
@@ -1128,14 +1133,20 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 				// Draw a drop shadow for the text
 				paint.setShadowLayer( mShadowRadius, 0, 0, mShadowColor );
 
+				// region === HINT ===
 				// Draw hint label (if present) behind the main key
 				String hint=key.getHintLabel( showHints7Bit(), showHintsAll() );
+
+				// Если хинт отсутствует, то вместо него рисуем альтернативный хинт.
+				if( hint.equals( "" ) )
+					hint=key.getAltHintLabel( showHints7Bit(), showHintsAll() );
+
 				if( !hint.equals( "" ) && !(key.isShifted() && key.shiftLabel!=null && hint.charAt( 0 )==key.shiftLabel.charAt( 0 )) )
 				{
-					int hintTextSize=(int) (mKeyTextSize*0.6*mLabelScale);
-					paintHint.setTextSize( hintTextSize );
+					hint=hint.substring( 0, 1 );
+					paintHint.setTextSize( mHintTextSize );
 
-					final int hintLabelHeight=getLabelHeight( paintHint, hintTextSize );
+					final int hintLabelHeight=getLabelHeight( paintHint, mHintTextSize );
 					int x=key.width-padding.right;
 					int baseline=padding.top+hintLabelHeight*12/10;
 					if( Character.getType( hint.charAt( 0 ) )==Character.NON_SPACING_MARK )
@@ -1143,40 +1154,39 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 					else
 						canvas.drawText( hint, x, baseline, paintHint );
 				}
+				// endregion
 
+				// Второй ряд хинтов рисовать не будем. Ибо слишком загромождают кнопку. 
+				// region === ALT HINT ===
+				/*
 				// Draw alternate hint label (if present) behind the main key
 				String altHint=key.getAltHintLabel( showHints7Bit(), showHintsAll() );
 				if( !altHint.equals( "" ) )
 				{
-					int hintTextSize=(int) (mKeyTextSize*0.6*mLabelScale);
-					paintHint.setTextSize( hintTextSize );
+					altHint=altHint.substring( 0, 1 );
+					paintHint.setTextSize( mHintTextSize );
 
-					final int hintLabelHeight=getLabelHeight( paintHint, hintTextSize );
+					final int hintLabelHeight=getLabelHeight( paintHint, mHintTextSize );
 					int x=key.width-padding.right;
 					int baseline=padding.top+hintLabelHeight*(hint.equals( "" ) ? 12 : 26)/10;
 					if( Character.getType( altHint.charAt( 0 ) )==Character.NON_SPACING_MARK )
-					{
 						drawDeadKeyLabel( canvas, altHint, x, baseline, paintHint );
-					}
 					else
-					{
 						canvas.drawText( altHint, x, baseline, paintHint );
-					}
 				}
+				*/
+				// endregion
 
+				// region === MAIN KEY ===
 				// Draw main key label
 				final int centerX=(key.width+padding.left-padding.right)/2;
 				final int centerY=(key.height+padding.top-padding.bottom)/2;
 				final float baseline=centerY
 					+labelHeight*KEY_LABEL_VERTICAL_ADJUSTMENT_FACTOR;
 				if( key.isDeadKey() )
-				{
 					drawDeadKeyLabel( canvas, label, centerX, baseline, paint );
-				}
 				else
-				{
 					canvas.drawText( label, centerX, baseline, paint );
-				}
 				if( key.isCursor )
 				{
 					// poor man's bold - FIXME
@@ -1188,6 +1198,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 					canvas.drawText( label, centerX, baseline+0.5f, paint );
 					canvas.drawText( label, centerX, baseline-0.5f, paint );
 				}
+				// endregion
 
 				// Turn off drop shadow
 				paint.setShadowLayer( 0, 0, 0, 0 );
