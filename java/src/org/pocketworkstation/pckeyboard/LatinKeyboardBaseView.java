@@ -1330,8 +1330,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		Drawable icon=key.icon;
 		if( icon!=null && !shouldDrawLabelAndIcon( key ) )
 		{
-			mPreviewText.setCompoundDrawables( null, null, null,
-				key.iconPreview!=null ? key.iconPreview : icon );
+			mPreviewText.setCompoundDrawables( null, null, null, key.iconPreview!=null ? key.iconPreview : icon );
 			mPreviewText.setText( null );
 		}
 		else

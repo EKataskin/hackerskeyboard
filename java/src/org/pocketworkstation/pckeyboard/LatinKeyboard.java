@@ -630,6 +630,7 @@ public class LatinKeyboard extends Keyboard
 		return width;
 	}
 
+	/** Отрисовывает процесс слайдинга по пробелу. */
 	private void updateLocaleDrag( int diff )
 	{
 		if( mSlidingLocaleIcon==null )
@@ -642,40 +643,26 @@ public class LatinKeyboard extends Keyboard
 		}
 		mSlidingLocaleIcon.setDiff( diff );
 		if( Math.abs( diff )==Integer.MAX_VALUE )
-		{
 			mSpaceKey.iconPreview=mSpacePreviewIcon;
-		}
 		else
-		{
 			mSpaceKey.iconPreview=mSlidingLocaleIcon;
-		}
 		mSpaceKey.iconPreview.invalidateSelf();
 	}
 
 	public int getLanguageChangeDirection()
 	{
-		if( mSpaceKey==null || mLanguageSwitcher.getLocaleCount()<2
-			|| Math.abs( mSpaceDragLastDiff )<getSpacePreviewWidth()*SPACEBAR_DRAG_THRESHOLD )
-		{
+		if( mSpaceKey==null || mLanguageSwitcher.getLocaleCount()<2 || Math.abs( mSpaceDragLastDiff )<getSpacePreviewWidth()*SPACEBAR_DRAG_THRESHOLD )
 			return 0; // No change
-		}
 		return mSpaceDragLastDiff>0 ? 1 : -1;
 	}
 
 	public void setLanguageSwitcher( LanguageSwitcher switcher, boolean isAutoCompletion )
 	{
 		mLanguageSwitcher=switcher;
-		Locale locale=mLanguageSwitcher.getLocaleCount()>0
-			? mLanguageSwitcher.getInputLocale()
-			: null;
+		Locale locale=mLanguageSwitcher.getLocaleCount()>0 ? mLanguageSwitcher.getInputLocale() : null;
 		// If the language count is 1 and is the same as the system language, don't show it.
-		if( locale!=null
-			&& mLanguageSwitcher.getLocaleCount()==1
-			&& mLanguageSwitcher.getSystemLocale().getLanguage()
-			.equalsIgnoreCase( locale.getLanguage() ) )
-		{
+		if( locale!=null && mLanguageSwitcher.getLocaleCount()==1 && mLanguageSwitcher.getSystemLocale().getLanguage().equalsIgnoreCase( locale.getLanguage() ) )
 			locale=null;
-		}
 		mLocale=locale;
 		updateSymbolIcons( isAutoCompletion );
 	}
@@ -700,9 +687,7 @@ public class LatinKeyboard extends Keyboard
 		mPrefLetterY=0;
 		mPrefDistance=Integer.MAX_VALUE;
 		if( mSpaceKey!=null )
-		{
 			updateLocaleDrag( Integer.MAX_VALUE );
-		}
 	}
 
 	/**
@@ -712,21 +697,16 @@ public class LatinKeyboard extends Keyboard
 	boolean isInside( LatinKey key, int x, int y )
 	{
 		final int code=key.codes[0];
-		if( code==KEYCODE_SHIFT ||
-			code==KEYCODE_DELETE )
+		if( code==KEYCODE_SHIFT || code==KEYCODE_DELETE )
 		{
 			// Adjust target area for these keys
 			y-=key.height/10;
 			if( code==KEYCODE_SHIFT )
 			{
 				if( key.x==0 )
-				{
 					x+=key.width/6;  // left shift
-				}
 				else
-				{
 					x-=key.width/6;  // right shift
-				}
 			}
 			if( code==KEYCODE_DELETE ) x-=key.width/6;
 		}
@@ -739,9 +719,7 @@ public class LatinKeyboard extends Keyboard
 				{
 					int diff=x-mSpaceDragStartX;
 					if( Math.abs( diff-mSpaceDragLastDiff )>0 )
-					{
 						updateLocaleDrag( diff );
-					}
 					mSpaceDragLastDiff=diff;
 					return true;
 				}
