@@ -1033,10 +1033,8 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		if( mRecolorSymbols )
 		{
 			// TODO: cache these?
-			iconColorFilter=new PorterDuffColorFilter(
-				mKeyTextColor, PorterDuff.Mode.SRC_ATOP );
-			shadowColorFilter=new PorterDuffColorFilter(
-				mShadowColor, PorterDuff.Mode.SRC_ATOP );
+			iconColorFilter=new PorterDuffColorFilter( mKeyTextColor, PorterDuff.Mode.SRC_ATOP );
+			shadowColorFilter=new PorterDuffColorFilter( mShadowColor, PorterDuff.Mode.SRC_ATOP );
 		}
 
 		boolean drawSingleKey=false;
