@@ -456,6 +456,10 @@ public class LatinKeyboard extends Keyboard
 	private void updateSpaceBarForLocale( boolean isAutoCompletion )
 	{
 		if( mSpaceKey==null ) return;
+		mSpaceKey.icon=mRes.getDrawable( R.drawable.sym_keyboard_space );
+
+		// Отключаем отрисовку названия локали со стрелками на пробеле.
+		/* 
 		// If application locales are explicitly selected.
 		if( mLocale!=null )
 		{
@@ -469,6 +473,7 @@ public class LatinKeyboard extends Keyboard
 			else
 				mSpaceKey.icon=mRes.getDrawable( R.drawable.sym_keyboard_space );
 		}
+		*/
 	}
 
 	// Compute width of text with specified text size using paint.
