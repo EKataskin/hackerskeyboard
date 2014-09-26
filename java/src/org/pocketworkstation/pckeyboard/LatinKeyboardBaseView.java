@@ -504,8 +504,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		Log.i( TAG, "Creating new LatinKeyboardBaseView "+this );
 		setRenderModeIfPossible( LatinIME.sKeyboardSettings.renderMode );
 
-		TypedArray a=context.obtainStyledAttributes(
-			attrs, R.styleable.LatinKeyboardBaseView, defStyle, R.style.LatinKeyboardBaseView );
+		TypedArray a=context.obtainStyledAttributes( attrs, R.styleable.LatinKeyboardBaseView, defStyle, R.style.LatinKeyboardBaseView );
 
 		int n=a.getIndexCount();
 		for( int i=0; i<n; i++ )
