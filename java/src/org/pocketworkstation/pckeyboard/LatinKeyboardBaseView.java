@@ -309,8 +309,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 			}
 			else
 			{
-				sendMessageDelayed( obtainMessage( MSG_POPUP_PREVIEW, keyIndex, 0, tracker ),
-					delay );
+				sendMessageDelayed( obtainMessage( MSG_POPUP_PREVIEW, keyIndex, 0, tracker ), delay );
 			}
 		}
 
@@ -1350,10 +1349,8 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 				mPreviewText.setTypeface( mKeyTextStyle );
 			}
 		}
-		mPreviewText.measure( MeasureSpec.makeMeasureSpec( 0, MeasureSpec.UNSPECIFIED ),
-			MeasureSpec.makeMeasureSpec( 0, MeasureSpec.UNSPECIFIED ) );
-		int popupWidth=Math.max( mPreviewText.getMeasuredWidth(), key.width
-			+mPreviewText.getPaddingLeft()+mPreviewText.getPaddingRight() );
+		mPreviewText.measure( MeasureSpec.makeMeasureSpec( 0, MeasureSpec.UNSPECIFIED ), MeasureSpec.makeMeasureSpec( 0, MeasureSpec.UNSPECIFIED ) );
+		int popupWidth=Math.max( mPreviewText.getMeasuredWidth(), key.width+mPreviewText.getPaddingLeft()+mPreviewText.getPaddingRight() );
 		final int popupHeight=mPreviewHeight;
 		LayoutParams lp=mPreviewText.getLayoutParams();
 		if( lp!=null )
@@ -1390,13 +1387,9 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 			// If the key you're pressing is on the left side of the keyboard, show the popup on
 			// the right, offset by enough to see at least one key to the left/right.
 			if( key.x+key.width<=getWidth()/2 )
-			{
 				popupPreviewX+=(int) (key.width*2.5);
-			}
 			else
-			{
 				popupPreviewX-=(int) (key.width*2.5);
-			}
 			popupPreviewY+=popupHeight;
 		}
 
@@ -1408,8 +1401,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		{
 			mPreviewPopup.setWidth( popupWidth );
 			mPreviewPopup.setHeight( popupHeight );
-			mPreviewPopup.showAtLocation( mMiniKeyboardParent, Gravity.NO_GRAVITY,
-				popupPreviewX, popupPreviewY );
+			mPreviewPopup.showAtLocation( mMiniKeyboardParent, Gravity.NO_GRAVITY, popupPreviewX, popupPreviewY );
 		}
 		// Record popup preview position to display mini-keyboard later at the same positon
 		mPopupPreviewDisplayedY=popupPreviewY;

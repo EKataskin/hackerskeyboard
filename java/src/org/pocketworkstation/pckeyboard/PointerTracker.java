@@ -605,13 +605,9 @@ public class PointerTracker
 		// supported. On the other hand, if multi-touch is not supported, the modifier key should
 		// be shown as preview.
 		if( mHasDistinctMultitouch && isModifier() )
-		{
 			mProxy.showPreview( NOT_A_KEY, this );
-		}
 		else
-		{
 			mProxy.showPreview( keyIndex, this );
-		}
 	}
 
 	private void startLongPressTimer( int keyIndex )
