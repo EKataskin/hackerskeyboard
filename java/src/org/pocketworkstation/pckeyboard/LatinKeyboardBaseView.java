@@ -1058,17 +1058,9 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		{
 			final Key key=keys[i];
 			if( drawSingleKey && invalidKey!=key )
-			{
 				continue;
-			}
-			if( !mDirtyRect.intersects(
-				key.x+kbdPaddingLeft,
-				key.y+kbdPaddingTop,
-				key.x+key.width+kbdPaddingLeft,
-				key.y+key.height+kbdPaddingTop ) )
-			{
+			if( !mDirtyRect.intersects( key.x+kbdPaddingLeft, key.y+kbdPaddingTop, key.x+key.width+kbdPaddingLeft, key.y+key.height+kbdPaddingTop ) )
 				continue;
-			}
 			keysDrawn++;
 			paint.setColor( key.isCursor ? mKeyCursorColor : mKeyTextColor );
 
@@ -1178,8 +1170,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 				// Draw main key label
 				final int centerX=(key.width+padding.left-padding.right)/2;
 				final int centerY=(key.height+padding.top-padding.bottom)/2;
-				final float baseline=centerY
-					+labelHeight*KEY_LABEL_VERTICAL_ADJUSTMENT_FACTOR;
+				final float baseline=centerY+labelHeight*KEY_LABEL_VERTICAL_ADJUSTMENT_FACTOR;
 				if( key.isDeadKey() )
 					drawDeadKeyLabel( canvas, label, centerX, baseline, paint );
 				else
@@ -1309,17 +1300,13 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 	{
 		int oldKeyIndex=mOldPreviewKeyIndex;
 		mOldPreviewKeyIndex=keyIndex;
-		final boolean isLanguageSwitchEnabled=(mKeyboard instanceof LatinKeyboard)
-			&& ((LatinKeyboard) mKeyboard).isLanguageSwitchEnabled();
+		final boolean isLanguageSwitchEnabled=(mKeyboard instanceof LatinKeyboard) && ((LatinKeyboard) mKeyboard).isLanguageSwitchEnabled();
 		// We should re-draw popup preview when 1) we need to hide the preview, 2) we will show
 		// the space key preview and 3) pointer moves off the space key to other letter key, we
 		// should hide the preview of the previous key.
-		final boolean hidePreviewOrShowSpaceKeyPreview=(tracker==null)
-			|| tracker.isSpaceKey( keyIndex ) || tracker.isSpaceKey( oldKeyIndex );
+		final boolean hidePreviewOrShowSpaceKeyPreview=(tracker==null) || tracker.isSpaceKey( keyIndex ) || tracker.isSpaceKey( oldKeyIndex );
 		// If key changed and preview is on or the key is space (language switch is enabled)
-		if( oldKeyIndex!=keyIndex
-			&& (mShowPreview
-			|| (hidePreviewOrShowSpaceKeyPreview && isLanguageSwitchEnabled)) )
+		if( oldKeyIndex!=keyIndex && (mShowPreview || (hidePreviewOrShowSpaceKeyPreview && isLanguageSwitchEnabled)) )
 		{
 			if( keyIndex==NOT_A_KEY )
 			{
@@ -1468,9 +1455,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 	{
 		// Check if we have a popup layout specified first.
 		if( mPopupLayout==0 )
-		{
 			return false;
-		}
 
 		Key popupKey=tracker.getKey( keyIndex );
 		if( popupKey==null )
@@ -1616,13 +1601,11 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		if( kbd==null ) return false;
 
 		if( mMiniKeyboardContainer==null )
-		{
 			inflateMiniKeyboardContainer();
-		}
-		if( mMiniKeyboard==null ) return false;
+		if( mMiniKeyboard==null )
+			return false;
 		mMiniKeyboard.setKeyboard( kbd );
-		mMiniKeyboardContainer.measure( MeasureSpec.makeMeasureSpec( getWidth(), MeasureSpec.AT_MOST ),
-			MeasureSpec.makeMeasureSpec( getHeight(), MeasureSpec.AT_MOST ) );
+		mMiniKeyboardContainer.measure( MeasureSpec.makeMeasureSpec( getWidth(), MeasureSpec.AT_MOST ), MeasureSpec.makeMeasureSpec( getHeight(), MeasureSpec.AT_MOST ) );
 
 		if( mWindowOffset==null )
 		{
@@ -1686,8 +1669,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		// Inject down event on the key to mini keyboard.
 		long eventTime=SystemClock.uptimeMillis();
 		mMiniKeyboardPopupTime=eventTime;
-		MotionEvent downEvent=generateMiniKeyboardMotionEvent( MotionEvent.ACTION_DOWN, popupKey.x
-			+popupKey.width/2, popupKey.y+popupKey.height/2, eventTime );
+		MotionEvent downEvent=generateMiniKeyboardMotionEvent( MotionEvent.ACTION_DOWN, popupKey.x+popupKey.width/2, popupKey.y+popupKey.height/2, eventTime );
 		mMiniKeyboard.onTouchEvent( downEvent );
 		downEvent.recycle();
 
@@ -1821,16 +1803,13 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		// If the device does not have distinct multi-touch support panel, ignore all multi-touch
 		// events except a transition from/to single-touch.
 		if( !mHasDistinctMultitouch && pointerCount>1 && oldPointerCount>1 )
-		{
 			return true;
-		}
 
 		// Track the last few movements to look for spurious swipes.
 		mSwipeTracker.addMovement( me );
 
 		// Gesture detector must be enabled only when mini-keyboard is not on the screen.
-		if( !mMiniKeyboardVisible
-			&& mGestureDetector!=null && mGestureDetector.onTouchEvent( me ) )
+		if( !mMiniKeyboardVisible && mGestureDetector!=null && mGestureDetector.onTouchEvent( me ) )
 		{
 			dismissKeyPreview();
 			mHandler.cancelKeyTimers();
@@ -1852,8 +1831,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 			{
 				final int miniKeyboardX=(int) me.getX( miniKeyboardPointerIndex );
 				final int miniKeyboardY=(int) me.getY( miniKeyboardPointerIndex );
-				MotionEvent translated=generateMiniKeyboardMotionEvent( action,
-					miniKeyboardX, miniKeyboardY, eventTime );
+				MotionEvent translated=generateMiniKeyboardMotionEvent( action, miniKeyboardX, miniKeyboardY, eventTime );
 				mMiniKeyboard.onTouchEvent( translated );
 				translated.recycle();
 			}
@@ -1864,16 +1842,12 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 		{
 			// It will keep being in the key repeating mode while the key is being pressed.
 			if( action==MotionEvent.ACTION_MOVE )
-			{
 				return true;
-			}
 			final PointerTracker tracker=getPointerTracker( id );
 			// Key repeating timer will be canceled if 2 or more keys are in action, and current
 			// event (UP or DOWN) is non-modifier key.
 			if( pointerCount>1 && !tracker.isModifier() )
-			{
 				mHandler.cancelKeyRepeatTimer();
-			}
 			// Up event will pass through.
 		}
 
@@ -1902,8 +1876,7 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 			}
 			else
 			{
-				Log.w( TAG, "Unknown touch panel behavior: pointer count is "+pointerCount
-					+" (old "+oldPointerCount+")" );
+				Log.w( TAG, "Unknown touch panel behavior: pointer count is "+pointerCount+" (old "+oldPointerCount+")" );
 			}
 			if( continuing )
 				tracker.setSlidingKeyInputState( true );
