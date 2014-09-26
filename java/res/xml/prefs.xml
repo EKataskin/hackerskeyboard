@@ -117,8 +117,16 @@
 		<CheckBoxPreference
 			android:key="auto_cap"
 			android:title="@string/auto_cap"
+			android:summary="@string/auto_cap_summary"
 			android:persistent="true"
 			android:defaultValue="@bool/default_auto_cap" />
+
+		<CheckBoxPreference
+			android:key="auto_space"
+			android:title="@string/auto_space"
+			android:summary="@string/auto_space_summary"
+			android:persistent="true"
+			android:defaultValue="@bool/default_auto_space" />
 
 		<CheckBoxPreference
 			android:key="pref_caps_lock"

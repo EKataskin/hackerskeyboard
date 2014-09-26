@@ -233,6 +233,8 @@
     <string name="prediction_landscape_summary">"Скрывать предложение слов в горизонтальной ориентации"</string>
     <string name="auto_cap">"Автоподст. заглавных"</string>
     <string name="auto_cap_summary">"Делать заглавной первую букву предложения"</string>
+    <string name="auto_space">"Автоподст. пробела"</string>
+    <string name="auto_space_summary">"Добавлять пробел после вставки из словаря"</string>
     <string name="auto_punctuate">"Автопунктуация"</string>
     <string name="auto_punctuate_summary" />
     <string name="quick_fixes">"Быстрое исправление"</string>

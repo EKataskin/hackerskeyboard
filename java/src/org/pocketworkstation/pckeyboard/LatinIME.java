@@ -70,6 +70,7 @@ public class LatinIME extends InputMethodService implements
 	private static final String PREF_SOUND_ON="sound_on";
 	private static final String PREF_POPUP_ON="popup_on";
 	private static final String PREF_AUTO_CAP="auto_cap";
+	private static final String PREF_AUTO_SPACE="auto_space";
 	private static final String PREF_QUICK_FIXES="quick_fixes";
 	private static final String PREF_SHOW_SUGGESTIONS="show_suggestions";
 	private static final String PREF_AUTO_COMPLETE="auto_complete";
@@ -155,6 +156,7 @@ public class LatinIME extends InputMethodService implements
 	private boolean mPredictionOnPref;
 	private boolean mCompletionOn;
 	private boolean mHasDictionary;
+	private boolean mAutoSpacePref;
 	private boolean mAutoSpace;
 	private boolean mJustAddedAutoSpace;
 	private boolean mAutoCorrectEnabled;
@@ -850,10 +852,10 @@ public class LatinIME extends InputMethodService implements
 				if( mPasswordText )
 					mPredictionOnForMode=false;
 
-				if( variation==EditorInfo.TYPE_TEXT_VARIATION_EMAIL_ADDRESS || variation==EditorInfo.TYPE_TEXT_VARIATION_PERSON_NAME || !mLanguageSwitcher.allowAutoSpace() )
+				if( variation==EditorInfo.TYPE_TEXT_VARIATION_EMAIL_ADDRESS || variation==EditorInfo.TYPE_TEXT_VARIATION_PERSON_NAME )
 					mAutoSpace=false;
 				else
-					mAutoSpace=true;
+					mAutoSpace=mAutoSpacePref && mLanguageSwitcher.allowAutoSpace();
 
 				if( variation==EditorInfo.TYPE_TEXT_VARIATION_EMAIL_ADDRESS )
 				{
@@ -3344,6 +3346,7 @@ public class LatinIME extends InputMethodService implements
 		initSuggest( mLanguageSwitcher.getInputLanguage() );
 		mLanguageSwitcher.persist();
 		mAutoCapActive=mAutoCapPref && mLanguageSwitcher.allowAutoCap();
+		mAutoSpace=mAutoSpacePref && mLanguageSwitcher.allowAutoSpace();
 		mDeadKeysActive=mLanguageSwitcher.allowDeadKeys();
 		updateShiftKeyState( getCurrentInputEditorInfo() );
 		setCandidatesViewShown( isPredictionOn() );
@@ -4009,17 +4012,14 @@ public class LatinIME extends InputMethodService implements
 		mVibrateOn=sp.getBoolean( PREF_VIBRATE_ON, false );
 		mVibrateLen=getPrefInt( sp, PREF_VIBRATE_LEN, getResources().getString( R.string.vibrate_duration_ms ) );
 		mSoundOn=sp.getBoolean( PREF_SOUND_ON, false );
-		mPopupOn=sp.getBoolean( PREF_POPUP_ON, mResources
-			.getBoolean( R.bool.default_popup_preview ) );
-		mAutoCapPref=sp.getBoolean( PREF_AUTO_CAP, getResources().getBoolean(
-			R.bool.default_auto_cap ) );
+		mPopupOn=sp.getBoolean( PREF_POPUP_ON, mResources.getBoolean( R.bool.default_popup_preview ) );
+		mAutoCapPref=sp.getBoolean( PREF_AUTO_CAP, getResources().getBoolean( R.bool.default_auto_cap ) );
+		mAutoSpacePref=sp.getBoolean( PREF_AUTO_SPACE, getResources().getBoolean( R.bool.default_auto_space ) );
 		mQuickFixes=sp.getBoolean( PREF_QUICK_FIXES, true );
 
-		mShowSuggestions=sp.getBoolean( PREF_SHOW_SUGGESTIONS, mResources
-			.getBoolean( R.bool.default_suggestions ) );
+		mShowSuggestions=sp.getBoolean( PREF_SHOW_SUGGESTIONS, mResources.getBoolean( R.bool.default_suggestions ) );
 
-		final String voiceMode=sp.getString( PREF_VOICE_MODE,
-			getString( R.string.voice_mode_main ) );
+		final String voiceMode=sp.getString( PREF_VOICE_MODE, getString( R.string.voice_mode_main ) );
 		boolean enableVoice=!voiceMode
 			.equals( getString( R.string.voice_mode_off ) )
 			&& mEnableVoiceButton;
@@ -4042,6 +4042,7 @@ public class LatinIME extends InputMethodService implements
 		updateAutoTextEnabled( mResources.getConfiguration().locale );
 		mLanguageSwitcher.loadLocales( sp );
 		mAutoCapActive=mAutoCapPref && mLanguageSwitcher.allowAutoCap();
+		mAutoSpace=mAutoSpacePref && mLanguageSwitcher.allowAutoSpace();
 		mDeadKeysActive=mLanguageSwitcher.allowDeadKeys();
 	}
 
