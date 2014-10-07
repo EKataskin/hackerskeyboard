@@ -385,19 +385,19 @@ public class LatinKeyboardView extends LatinKeyboardBaseView
 		if( me.getAction()==MotionEvent.ACTION_DOWN )
 			keyboard.keyReleased();
 
-		if( me.getAction()==MotionEvent.ACTION_UP )
-		{
-			int languageDirection=keyboard.getLanguageChangeDirection();
-			if( languageDirection!=0 )
-			{
-				getOnKeyboardActionListener().onKey(
-					languageDirection==1 ? KEYCODE_NEXT_LANGUAGE : KEYCODE_PREV_LANGUAGE,
-					null, mLastX, mLastY );
-				me.setAction( MotionEvent.ACTION_CANCEL );
-				keyboard.keyReleased();
-				return super.onTouchEvent( me );
-			}
-		}
+//		if( me.getAction()==MotionEvent.ACTION_UP )
+//		{
+//			int languageDirection=keyboard.getLanguageChangeDirection();
+//			if( languageDirection!=0 )
+//			{
+//				getOnKeyboardActionListener().onKey(
+//					languageDirection==1 ? KEYCODE_NEXT_LANGUAGE : KEYCODE_PREV_LANGUAGE,
+//					null, mLastX, mLastY );
+//				me.setAction( MotionEvent.ACTION_CANCEL );
+//				keyboard.keyReleased();
+//				return super.onTouchEvent( me );
+//			}
+//		}
 
 		// If we don't have an extension keyboard, don't go any further.
 		if( keyboard.getExtension()==null )

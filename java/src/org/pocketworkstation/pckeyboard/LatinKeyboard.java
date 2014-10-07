@@ -63,7 +63,7 @@ public class LatinKeyboard extends Keyboard
 	private final int[] mSpaceKeyIndexArray;
 	private int mSpaceDragStartX;
 	private int mSpaceDragLastDiff;
-	private Locale mLocale;
+//	private Locale mLocale;
 	private LanguageSwitcher mLanguageSwitcher;
 	private final Resources mRes;
 	private final Context mContext;
@@ -642,28 +642,28 @@ public class LatinKeyboard extends Keyboard
 //		mSpaceKey.iconPreview.invalidateSelf();
 	}
 
-	public int getLanguageChangeDirection()
-	{
-		if( mSpaceKey==null || mLanguageSwitcher.getLocaleCount()<2 || Math.abs( mSpaceDragLastDiff )<getSpacePreviewWidth()*SPACEBAR_DRAG_THRESHOLD )
-			return 0; // No change
-		return mSpaceDragLastDiff>0 ? 1 : -1;
-	}
+//	public int getLanguageChangeDirection()
+//	{
+//		if( mSpaceKey==null || mLanguageSwitcher.getLocaleCount()<2 || Math.abs( mSpaceDragLastDiff )<getSpacePreviewWidth()*SPACEBAR_DRAG_THRESHOLD )
+//			return 0; // No change
+//		return mSpaceDragLastDiff>0 ? 1 : -1;
+//	}
 
 	public void setLanguageSwitcher( LanguageSwitcher switcher, boolean isAutoCompletion )
 	{
 		mLanguageSwitcher=switcher;
-		Locale locale=mLanguageSwitcher.getLocaleCount()>0 ? mLanguageSwitcher.getInputLocale() : null;
-		// If the language count is 1 and is the same as the system language, don't show it.
-		if( locale!=null && mLanguageSwitcher.getLocaleCount()==1 && mLanguageSwitcher.getSystemLocale().getLanguage().equalsIgnoreCase( locale.getLanguage() ) )
-			locale=null;
-		mLocale=locale;
+//		Locale locale=mLanguageSwitcher.getLocaleCount()>0 ? mLanguageSwitcher.getInputLocale() : null;
+//		// If the language count is 1 and is the same as the system language, don't show it.
+//		if( locale!=null && mLanguageSwitcher.getLocaleCount()==1 && mLanguageSwitcher.getSystemLocale().getLanguage().equalsIgnoreCase( locale.getLanguage() ) )
+//			locale=null;
+//		mLocale=locale;
 		updateSymbolIcons( isAutoCompletion );
 	}
 
-	boolean isCurrentlyInSpace()
-	{
-		return mCurrentlyInSpace;
-	}
+//	boolean isCurrentlyInSpace()
+//	{
+//		return mCurrentlyInSpace;
+//	}
 
 	void setPreferredLetters( int[] frequencies )
 	{
@@ -679,8 +679,8 @@ public class LatinKeyboard extends Keyboard
 		mPrefLetterX=0;
 		mPrefLetterY=0;
 		mPrefDistance=Integer.MAX_VALUE;
-		if( mSpaceKey!=null )
-			updateLocaleDrag( Integer.MAX_VALUE );
+//		if( mSpaceKey!=null )
+//			updateLocaleDrag( Integer.MAX_VALUE );
 	}
 
 	/** Does the magic of locking the touch gesture into the spacebar when switching input languages. */
