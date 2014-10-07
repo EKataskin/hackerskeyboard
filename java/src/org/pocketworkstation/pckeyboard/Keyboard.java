@@ -489,17 +489,11 @@ public class Keyboard
 			this.realX=this.x+realGap-parent.parent.mHorizontalPad/2;
 			this.x=Math.round( this.realX );
 			TypedValue codesValue=new TypedValue();
-			a.getValue( R.styleable.Keyboard_Key_codes,
-				codesValue );
-			if( codesValue.type==TypedValue.TYPE_INT_DEC
-				|| codesValue.type==TypedValue.TYPE_INT_HEX )
-			{
+			a.getValue( R.styleable.Keyboard_Key_codes, codesValue );
+			if( codesValue.type==TypedValue.TYPE_INT_DEC || codesValue.type==TypedValue.TYPE_INT_HEX )
 				codes=new int[] {codesValue.data};
-			}
 			else if( codesValue.type==TypedValue.TYPE_STRING )
-			{
 				codes=parseCSV( codesValue.string.toString() );
-			}
 
 			iconPreview=a.getDrawable( R.styleable.Keyboard_Key_iconPreview );
 			if( iconPreview!=null )

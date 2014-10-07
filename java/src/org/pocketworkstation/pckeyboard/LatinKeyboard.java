@@ -52,8 +52,8 @@ public class LatinKeyboard extends Keyboard
 	private Drawable mSettingsPreviewIcon;
 	private Drawable m123MicIcon;
 	private Drawable m123MicPreviewIcon;
-	private final Drawable mButtonArrowLeftIcon;
-	private final Drawable mButtonArrowRightIcon;
+//	private final Drawable mButtonArrowLeftIcon;
+//	private final Drawable mButtonArrowRightIcon;
 	private Key mShiftKey;
 	private Key mEnterKey;
 	private Key mF1Key;
@@ -132,8 +132,8 @@ public class LatinKeyboard extends Keyboard
 		mSettingsIcon=res.getDrawable( R.drawable.sym_keyboard_settings );
 		mSettingsPreviewIcon=res.getDrawable( R.drawable.sym_keyboard_feedback_settings );
 		setDefaultBounds( mMicPreviewIcon );
-		mButtonArrowLeftIcon=res.getDrawable( R.drawable.sym_keyboard_language_arrows_left );
-		mButtonArrowRightIcon=res.getDrawable( R.drawable.sym_keyboard_language_arrows_right );
+//		mButtonArrowLeftIcon=res.getDrawable( R.drawable.sym_keyboard_language_arrows_left );
+//		mButtonArrowRightIcon=res.getDrawable( R.drawable.sym_keyboard_language_arrows_right );
 		m123MicIcon=res.getDrawable( R.drawable.sym_keyboard_123_mic );
 		m123MicPreviewIcon=res.getDrawable( R.drawable.sym_keyboard_feedback_123_mic );
 		mHintIcon=res.getDrawable( R.drawable.hint_popup );
@@ -215,17 +215,14 @@ public class LatinKeyboard extends Keyboard
 					break;
 				default:
 					// Keep Return key in IM mode, we have a dedicated smiley key.
-					mEnterKey.iconPreview=res.getDrawable(
-						R.drawable.sym_keyboard_feedback_return );
+					mEnterKey.iconPreview=res.getDrawable( R.drawable.sym_keyboard_feedback_return );
 					mEnterKey.icon=res.getDrawable( R.drawable.sym_keyboard_return );
 					mEnterKey.label=null;
 					break;
 			}
 			// Set the initial size of the preview icon
 			if( mEnterKey.iconPreview!=null )
-			{
 				setDefaultBounds( mEnterKey.iconPreview );
-			}
 		}
 	}
 
@@ -439,9 +436,7 @@ public class LatinKeyboard extends Keyboard
 		return key.popupResId==R.xml.popup_punctuation || key.popupResId==R.xml.popup_smileys;
 	}
 
-	/**
-	 * @return a key which should be invalidated.
-	 */
+	/** @return a key which should be invalidated. */
 	public Key onAutoCompletionStateChanged( boolean isAutoCompletion )
 	{
 		updateSpaceBarForLocale( isAutoCompletion );
@@ -485,8 +480,7 @@ public class LatinKeyboard extends Keyboard
 	}
 
 	// Overlay two images: mainIcon and hintIcon.
-	private Bitmap drawSynthesizedSettingsHintImage(
-		int width, int height, Drawable mainIcon, Drawable hintIcon )
+	private Bitmap drawSynthesizedSettingsHintImage( int width, int height, Drawable mainIcon, Drawable hintIcon )
 	{
 		if( mainIcon==null || hintIcon==null )
 			return null;
@@ -514,9 +508,7 @@ public class LatinKeyboard extends Keyboard
 	}
 
 	// Layout local language name and left and right arrow on space bar.
-	private static String layoutSpaceBar( Paint paint, Locale locale, Drawable lArrow,
-	                                      Drawable rArrow, int width, int height, float origTextSize,
-	                                      boolean allowVariableTextSize )
+	private static String layoutSpaceBar( Paint paint, Locale locale, Drawable lArrow, Drawable rArrow, int width, int height, float origTextSize, boolean allowVariableTextSize )
 	{
 		final float arrowWidth=lArrow.getIntrinsicWidth();
 		final float arrowHeight=lArrow.getIntrinsicHeight();
@@ -534,8 +526,7 @@ public class LatinKeyboard extends Keyboard
 		{
 			textWidth=getTextWidth( paint, language, textSize, bounds );
 			// If text size goes too small or text does not fit, use short name
-			useShortName=textSize/origTextSize<MINIMUM_SCALE_OF_LANGUAGE_NAME
-				|| textWidth>maxTextWidth;
+			useShortName=textSize/origTextSize<MINIMUM_SCALE_OF_LANGUAGE_NAME || textWidth>maxTextWidth;
 		}
 		else
 		{
@@ -555,12 +546,13 @@ public class LatinKeyboard extends Keyboard
 		final int top=(int) (baseline-arrowHeight);
 		final float remains=(width-textWidth)/2;
 		lArrow.setBounds( (int) (remains-arrowWidth), top, (int) remains, (int) baseline );
-		rArrow.setBounds( (int) (remains+textWidth), top, (int) (remains+textWidth+arrowWidth),
-			(int) baseline );
+		rArrow.setBounds( (int) (remains+textWidth), top, (int) (remains+textWidth+arrowWidth), (int) baseline );
 
 		return language;
 	}
 
+	// region drawSpaceBar 
+	/*
 	private Bitmap drawSpaceBar( int opacity, boolean isAutoCompletion )
 	{
 		final int width=mSpaceKey.width;
@@ -621,6 +613,8 @@ public class LatinKeyboard extends Keyboard
 		}
 		return buffer;
 	}
+	*/
+	// endregion
 
 	private int getSpacePreviewWidth()
 	{
@@ -690,10 +684,7 @@ public class LatinKeyboard extends Keyboard
 			updateLocaleDrag( Integer.MAX_VALUE );
 	}
 
-	/**
-	 * Does the magic of locking the touch gesture into the spacebar when
-	 * switching input languages.
-	 */
+	/** Does the magic of locking the touch gesture into the spacebar when switching input languages. */
 	boolean isInside( LatinKey key, int x, int y )
 	{
 		final int code=key.codes[0];
@@ -751,9 +742,7 @@ public class LatinKeyboard extends Keyboard
 				if( DEBUG_PREFERRED_LETTER )
 				{
 					if( mPrefLetter==code && !key.isInsideSuper( x, y ) )
-					{
 						Log.d( TAG, "CORRECTED !!!!!!" );
-					}
 				}
 				return mPrefLetter==code;
 			}
@@ -777,15 +766,12 @@ public class LatinKeyboard extends Keyboard
 							if( k!=key && inPrefList( k.codes[0], pref ) )
 							{
 								final int dist=distanceFrom( k, x, y );
-								if( dist<(int) (k.width*OVERLAP_PERCENTAGE_LOW_PROB) &&
-									(pref[k.codes[0]]>pref[mPrefLetter]*3) )
+								if( dist<(int) (k.width*OVERLAP_PERCENTAGE_LOW_PROB) && (pref[k.codes[0]]>pref[mPrefLetter]*3) )
 								{
 									mPrefLetter=k.codes[0];
 									mPrefDistance=dist;
 									if( DEBUG_PREFERRED_LETTER )
-									{
 										Log.d( TAG, "CORRECTED ALTHOUGH PREFERRED !!!!!!" );
-									}
 									break;
 								}
 							}
@@ -809,8 +795,7 @@ public class LatinKeyboard extends Keyboard
 					if( inPrefList( k.codes[0], pref ) )
 					{
 						final int dist=distanceFrom( k, x, y );
-						if( dist<(int) (k.width*OVERLAP_PERCENTAGE_HIGH_PROB)
-							&& dist<mPrefDistance )
+						if( dist<(int) (k.width*OVERLAP_PERCENTAGE_HIGH_PROB) && dist<mPrefDistance )
 						{
 							mPrefLetter=k.codes[0];
 							mPrefLetterX=x;
@@ -821,13 +806,9 @@ public class LatinKeyboard extends Keyboard
 				}
 				// Didn't find any
 				if( mPrefLetter==0 )
-				{
 					return inside;
-				}
 				else
-				{
 					return mPrefLetter==code;
-				}
 			}
 		}
 
@@ -859,15 +840,10 @@ public class LatinKeyboard extends Keyboard
 	public int[] getNearestKeys( int x, int y )
 	{
 		if( mCurrentlyInSpace )
-		{
 			return mSpaceKeyIndexArray;
-		}
 		else
-		{
 			// Avoid dead pixels at edges of the keyboard
-			return super.getNearestKeys( Math.max( 0, Math.min( x, getMinWidth()-1 ) ),
-				Math.max( 0, Math.min( y, getHeight()-1 ) ) );
-		}
+			return super.getNearestKeys( Math.max( 0, Math.min( x, getMinWidth()-1 ) ), Math.max( 0, Math.min( y, getHeight()-1 ) ) );
 	}
 
 	private int indexOf( int code )
@@ -876,15 +852,15 @@ public class LatinKeyboard extends Keyboard
 		int count=keys.size();
 		for( int i=0; i<count; i++ )
 		{
-			if( keys.get( i ).codes[0]==code ) return i;
+			if( keys.get( i ).codes[0]==code )
+				return i;
 		}
 		return -1;
 	}
 
 	private int getTextSizeFromTheme( int style, int defValue )
 	{
-		TypedArray array=mContext.getTheme().obtainStyledAttributes(
-			style, new int[] {android.R.attr.textSize} );
+		TypedArray array=mContext.getTheme().obtainStyledAttributes( style, new int[] {android.R.attr.textSize} );
 		int resId=array.getResourceId( 0, 0 );
 		if( resId>=array.length() )
 		{
@@ -898,20 +874,13 @@ public class LatinKeyboard extends Keyboard
 	// TODO LatinKey could be static class
 	class LatinKey extends Key
 	{
-
 		// functional normal state (with properties)
-		private final int[] KEY_STATE_FUNCTIONAL_NORMAL={
-			android.R.attr.state_single
-		};
+		private final int[] KEY_STATE_FUNCTIONAL_NORMAL={ android.R.attr.state_single };
 
 		// functional pressed state (with properties)
-		private final int[] KEY_STATE_FUNCTIONAL_PRESSED={
-			android.R.attr.state_single,
-			android.R.attr.state_pressed
-		};
+		private final int[] KEY_STATE_FUNCTIONAL_PRESSED={ android.R.attr.state_single, android.R.attr.state_pressed };
 
-		public LatinKey( Resources res, Keyboard.Row parent, int x, int y,
-		                 XmlResourceParser parser )
+		public LatinKey( Resources res, Keyboard.Row parent, int x, int y, XmlResourceParser parser )
 		{
 			super( res, parent, x, y, parser );
 		}
@@ -923,9 +892,7 @@ public class LatinKeyboard extends Keyboard
 			return !sticky && modifier;
 		}
 
-		/**
-		 * Overriding this method so that we can reduce the target area for certain keys.
-		 */
+		/** Overriding this method so that we can reduce the target area for certain keys. */
 		@Override
 		public boolean isInside( int x, int y )
 		{
