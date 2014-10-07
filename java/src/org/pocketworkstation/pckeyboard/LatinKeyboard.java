@@ -43,9 +43,9 @@ public class LatinKeyboard extends Keyboard
 	private Drawable mShiftLockIcon;
 	private Drawable mShiftLockPreviewIcon;
 	private Drawable mOldShiftIcon;
-	private Drawable mSpaceIcon;
-	private Drawable mSpaceAutoCompletionIndicator;
-	private Drawable mSpacePreviewIcon;
+//	private Drawable mSpaceIcon;
+//	private Drawable mSpaceAutoCompletionIndicator;
+//	private Drawable mSpacePreviewIcon;
 	private Drawable mMicIcon;
 	private Drawable mMicPreviewIcon;
 	private Drawable mSettingsIcon;
@@ -77,7 +77,7 @@ public class LatinKeyboard extends Keyboard
 	private final boolean mIsFnFullKeyboard;
 	private CharSequence m123Label;
 	private boolean mCurrentlyInSpace;
-	private SlidingLocaleDrawable mSlidingLocaleIcon;
+//	private SlidingLocaleDrawable mSlidingLocaleIcon;
 	private int[] mPrefLetterFrequencies;
 	private int mPrefLetter;
 	private int mPrefLetterX;
@@ -124,9 +124,9 @@ public class LatinKeyboard extends Keyboard
 		mShiftLockIcon=res.getDrawable( R.drawable.sym_keyboard_shift_locked );
 		mShiftLockPreviewIcon=res.getDrawable( R.drawable.sym_keyboard_feedback_shift_locked );
 		setDefaultBounds( mShiftLockPreviewIcon );
-		mSpaceIcon=res.getDrawable( R.drawable.sym_keyboard_space );
-		mSpaceAutoCompletionIndicator=res.getDrawable( R.drawable.sym_keyboard_space_led );
-		mSpacePreviewIcon=res.getDrawable( R.drawable.sym_keyboard_feedback_space );
+//		mSpaceIcon=res.getDrawable( R.drawable.sym_keyboard_space );
+//		mSpaceAutoCompletionIndicator=res.getDrawable( R.drawable.sym_keyboard_space_led );
+//		mSpacePreviewIcon=res.getDrawable( R.drawable.sym_keyboard_feedback_space );
 		mMicIcon=res.getDrawable( R.drawable.sym_keyboard_mic );
 		mMicPreviewIcon=res.getDrawable( R.drawable.sym_keyboard_feedback_mic );
 		mSettingsIcon=res.getDrawable( R.drawable.sym_keyboard_settings );
@@ -150,8 +150,7 @@ public class LatinKeyboard extends Keyboard
 	}
 
 	@Override
-	protected Key createKeyFromXml( Resources res, Row parent, int x, int y,
-	                                XmlResourceParser parser )
+	protected Key createKeyFromXml( Resources res, Row parent, int x, int y, XmlResourceParser parser )
 	{
 		Key key=new LatinKey( res, parent, x, y, parser );
 		if( key.codes==null ) return key;
@@ -443,10 +442,10 @@ public class LatinKeyboard extends Keyboard
 		return mSpaceKey;
 	}
 
-	public boolean isLanguageSwitchEnabled()
-	{
-		return mLocale!=null;
-	}
+//	public boolean isLanguageSwitchEnabled()
+//	{
+//		return mLocale!=null;
+//	}
 
 	private void updateSpaceBarForLocale( boolean isAutoCompletion )
 	{
@@ -627,20 +626,20 @@ public class LatinKeyboard extends Keyboard
 	/** Отрисовывает процесс слайдинга по пробелу. */
 	private void updateLocaleDrag( int diff )
 	{
-		if( mSlidingLocaleIcon==null )
-		{
-			final int width=getSpacePreviewWidth();
-			final int height=mSpacePreviewIcon.getIntrinsicHeight();
-			mSlidingLocaleIcon=new SlidingLocaleDrawable( mSpacePreviewIcon, width, height );
-			mSlidingLocaleIcon.setBounds( 0, 0, width, height );
-			mSpaceKey.iconPreview=mSlidingLocaleIcon;
-		}
-		mSlidingLocaleIcon.setDiff( diff );
-		if( Math.abs( diff )==Integer.MAX_VALUE )
-			mSpaceKey.iconPreview=mSpacePreviewIcon;
-		else
-			mSpaceKey.iconPreview=mSlidingLocaleIcon;
-		mSpaceKey.iconPreview.invalidateSelf();
+//		if( mSlidingLocaleIcon==null )
+//		{
+//			final int width=getSpacePreviewWidth();
+//			final int height=mSpacePreviewIcon.getIntrinsicHeight();
+//			mSlidingLocaleIcon=new SlidingLocaleDrawable( mSpacePreviewIcon, width, height );
+//			mSlidingLocaleIcon.setBounds( 0, 0, width, height );
+//			mSpaceKey.iconPreview=mSlidingLocaleIcon;
+//		}
+//		mSlidingLocaleIcon.setDiff( diff );
+//		if( Math.abs( diff )==Integer.MAX_VALUE )
+//			mSpaceKey.iconPreview=mSpacePreviewIcon;
+//		else
+//			mSpaceKey.iconPreview=mSlidingLocaleIcon;
+//		mSpaceKey.iconPreview.invalidateSelf();
 	}
 
 	public int getLanguageChangeDirection()

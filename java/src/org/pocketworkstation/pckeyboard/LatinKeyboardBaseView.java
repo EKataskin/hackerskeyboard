@@ -1297,16 +1297,20 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 
 	public void showPreview( int keyIndex, PointerTracker tracker )
 	{
+		// В этом методе отключено поднятие popup-окна для пробела.
+		
 		int oldKeyIndex=mOldPreviewKeyIndex;
 		mOldPreviewKeyIndex=keyIndex;
-		final boolean isLanguageSwitchEnabled=(mKeyboard instanceof LatinKeyboard) && ((LatinKeyboard) mKeyboard).isLanguageSwitchEnabled();
+//		final boolean isLanguageSwitchEnabled=(mKeyboard instanceof LatinKeyboard) && ((LatinKeyboard) mKeyboard).isLanguageSwitchEnabled();
 		// We should re-draw popup preview when
 		// 1) we need to hide the preview,
 		// 2) we will show the space key preview and
 		// 3) pointer moves off the space key to other letter key, we should hide the preview of the previous key.
-		final boolean hidePreviewOrShowSpaceKeyPreview=(tracker==null) || tracker.isSpaceKey( keyIndex ) || tracker.isSpaceKey( oldKeyIndex );
+//		final boolean hidePreviewOrShowSpaceKeyPreview=(tracker==null) || tracker.isSpaceKey( keyIndex ) || tracker.isSpaceKey( oldKeyIndex );
+		final boolean hidePreview=(tracker==null);
 		// If key changed and preview is on or the key is space (language switch is enabled)
-		if( oldKeyIndex!=keyIndex && (mShowPreview || (hidePreviewOrShowSpaceKeyPreview && isLanguageSwitchEnabled)) )
+//		if( oldKeyIndex!=keyIndex && (mShowPreview || (hidePreviewOrShowSpaceKeyPreview && isLanguageSwitchEnabled)) )
+		if( oldKeyIndex!=keyIndex && (mShowPreview || hidePreview) )
 		{
 			if( keyIndex==NOT_A_KEY )
 			{
@@ -1315,7 +1319,8 @@ public class LatinKeyboardBaseView extends View implements PointerTracker.UIProx
 			}
 			else if( tracker!=null )
 			{
-				int delay=mShowPreview ? mDelayBeforePreview : mDelayBeforeSpacePreview;
+//				int delay=mShowPreview ? mDelayBeforePreview : mDelayBeforeSpacePreview;
+				int delay=mDelayBeforePreview;
 				mHandler.popupPreview( delay, keyIndex, tracker );
 			}
 		}
